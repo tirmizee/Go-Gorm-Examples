@@ -13,7 +13,9 @@ type Product struct {
 
 func main() {
 
-	dsn := "host=0.0.0.0 user=usr password=pass dbname=test port=5432 sslmode=disable TimeZone=Asia/Bangkok"
+	var (
+		dsn = "host=0.0.0.0 user=usr password=pass dbname=test port=5432 sslmode=disable TimeZone=Asia/Bangkok"
+	)
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
