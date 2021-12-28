@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -25,17 +24,6 @@ func main() {
 	db, err := gorm.Open(postgres.New(postgresConfig), &gormConfig)
 	if err != nil {
 		panic(err)
-	}
-
-	if sqlDB, err := db.DB(); err == nil {
-		// SetMaxIdleConns sets the maximum number of connections in the idle connection pool.
-		sqlDB.SetMaxIdleConns(10)
-
-		// SetMaxOpenConns sets the maximum number of open connections to the database.
-		sqlDB.SetMaxOpenConns(100)
-
-		// SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
-		sqlDB.SetConnMaxLifetime(time.Hour)
 	}
 
 	// Migrate the schema
