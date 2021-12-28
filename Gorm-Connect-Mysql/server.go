@@ -30,17 +30,6 @@ func initGormV1() {
 		panic(err)
 	}
 
-	if sqlDB, err := db.DB(); err == nil {
-		// SetMaxIdleConns sets the maximum number of connections in the idle connection pool.
-		sqlDB.SetMaxIdleConns(10)
-
-		// SetMaxOpenConns sets the maximum number of open connections to the database.
-		sqlDB.SetMaxOpenConns(100)
-
-		// SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
-		sqlDB.SetConnMaxLifetime(time.Hour)
-	}
-
 	fmt.Println(*db.Config)
 	fmt.Println(db.ConnPool)
 
@@ -80,17 +69,6 @@ func initGormV2() {
 	db, err := gorm.Open(mysql.New(mysqlConfig), &gormConfig)
 	if err != nil {
 		panic(err)
-	}
-
-	if sqlDB, err := db.DB(); err == nil {
-		// SetMaxIdleConns sets the maximum number of connections in the idle connection pool.
-		sqlDB.SetMaxIdleConns(10)
-
-		// SetMaxOpenConns sets the maximum number of open connections to the database.
-		sqlDB.SetMaxOpenConns(100)
-
-		// SetConnMaxLifetime sets the maximum amount of time a connection may be reused.
-		sqlDB.SetConnMaxLifetime(time.Hour)
 	}
 
 	fmt.Println(*db.Config)
