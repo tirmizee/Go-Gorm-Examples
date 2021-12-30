@@ -27,7 +27,7 @@ services:
 
 ```go
 
-    var product Product
+    	var product Product
 	if err := db.Where("code = ?", "D41").First(&product).Error; err != nil {
 		// error handling...
 		fmt.Println(err)
