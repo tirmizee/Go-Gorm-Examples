@@ -64,4 +64,23 @@ func main() {
 		fmt.Println(err.Error())
 	}
 
+	product = Product{}
+	err = db.Where("code = ?", "D41").First(&product).Error
+	switch {
+	case errors.Is(err, gorm.ErrRecordNotFound):
+		fmt.Println(err.Error())
+	case errors.Is(err, gorm.ErrInvalidDB):
+		fmt.Println(err.Error())
+	case errors.Is(err, gorm.ErrEmptySlice):
+		fmt.Println(err.Error())
+	case errors.Is(err, gorm.ErrInvalidDB):
+		fmt.Println(err.Error())
+	case errors.Is(err, gorm.ErrInvalidData):
+		fmt.Println(err.Error())
+	case errors.Is(err, gorm.ErrInvalidTransaction):
+		fmt.Println(err.Error())
+	case errors.Is(err, gorm.ErrInvalidValue):
+		fmt.Println(err.Error())
+	}
+
 }
