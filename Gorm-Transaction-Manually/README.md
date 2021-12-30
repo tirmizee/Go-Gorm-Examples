@@ -27,7 +27,7 @@ services:
 
 ```go
 
-    // begin a transaction
+    	// begin a transaction
 	tx := db.Begin()
 
 	tx.Model(&product).Where("code = ?", "D42").Update("price", 80000)
