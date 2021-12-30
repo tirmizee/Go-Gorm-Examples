@@ -82,3 +82,30 @@ func main() {
 }
 
 ```
+
+        2021/12/30 01:23:29 /Users/pratya.yeekhaday/go/pkg/mod/gorm.io/driver/mysql@v1.2.2/migrator.go:234
+        [1.625ms] [rows:-] SELECT DATABASE()
+
+        2021/12/30 01:23:29 /Users/pratya.yeekhaday/go/pkg/mod/gorm.io/driver/mysql@v1.2.2/migrator.go:237
+        [4.358ms] [rows:1] SELECT SCHEMA_NAME from Information_schema.SCHEMATA where SCHEMA_NAME LIKE 'example%' ORDER BY SCHEMA_NAME='example' DESC limit 1
+
+        2021/12/30 01:23:29 /Users/pratya.yeekhaday/Desktop/GO-Playground/Go-Gorm-Examples/Gorm-Logger/server.go:31
+        [4.598ms] [rows:-] SELECT count(*) FROM information_schema.statistics WHERE table_schema = 'example' AND table_name = 'products' AND index_name = 'idx_products_deleted_at'
+
+        2021/12/30 01:23:29 /Users/pratya.yeekhaday/Desktop/GO-Playground/Go-Gorm-Examples/Gorm-Logger/server.go:31
+        [32.461ms] [rows:0] CREATE INDEX `idx_products_deleted_at` ON `products`(`deleted_at`)
+
+        2021/12/30 01:23:29 /Users/pratya.yeekhaday/Desktop/GO-Playground/Go-Gorm-Examples/Gorm-Logger/server.go:33
+        [7.522ms] [rows:0] UPDATE `products` SET `deleted_at`='2021-12-30 01:23:29.457' WHERE 1 = 1 AND `products`.`deleted_at` IS NULL
+
+        2021/12/30 01:23:29 /Users/pratya.yeekhaday/Desktop/GO-Playground/Go-Gorm-Examples/Gorm-Logger/server.go:36
+        [11.293ms] [rows:1] INSERT INTO `products` (`created_at`,`updated_at`,`deleted_at`,`code`,`price`) VALUES ('2021-12-30 01:23:29.465','2021-12-30 01:23:29.465',NULL,'D42',100)
+
+        2021/12/30 01:23:29 /Users/pratya.yeekhaday/Desktop/GO-Playground/Go-Gorm-Examples/Gorm-Logger/server.go:40
+        [3.657ms] [rows:1] SELECT * FROM `products` WHERE `products`.`id` = 1 AND `products`.`deleted_at` IS NULL ORDER BY `products`.`id` LIMIT 1
+
+        2021/12/30 01:23:29 /Users/pratya.yeekhaday/Desktop/GO-Playground/Go-Gorm-Examples/Gorm-Logger/server.go:41
+        [4.262ms] [rows:1] SELECT * FROM `products` WHERE code = 'D42' AND `products`.`deleted_at` IS NULL AND `products`.`id` = 1 ORDER BY `products`.`id` LIMIT 1
+
+        2021/12/30 01:23:29 /Users/pratya.yeekhaday/Desktop/GO-Playground/Go-Gorm-Examples/Gorm-Logger/server.go:44
+        [12.663ms] [rows:1] UPDATE `products` SET `price`=200,`updated_at`='2021-12-30 01:23:29.485' WHERE `id` = 1
